@@ -1,0 +1,26 @@
+{
+  "name": "kovarp/db-backup-worker",
+  "description": "Database backup worker",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Pavel Kovář",
+      "homepage": "https://www.pavelkovar.cz"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "dg/mysql-dump": "^1.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "kovarp\\DbBackupWorker\\": "src/"
+    }
+  },
+  "config": {
+    "process-timeout": 2000,
+    "platform": {
+      "php": "7.1.21"
+    }
+  }
+}
