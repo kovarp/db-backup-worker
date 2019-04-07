@@ -19,6 +19,7 @@ class Worker {
 		$this->user = $user;
 		$this->password = $password;
 		$this->host = $host;
+		$this->secret = $secret;
 	}
 
 	public function dump() {
