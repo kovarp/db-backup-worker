@@ -7,8 +7,8 @@ if (!isset($_GET['auth']) || empty($_GET['auth']) || $_GET['auth'] !== '') {
 require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new \kovarp\DbBackupWorker\Worker(
-	'warfarin_lek',
-	'root',
+	'',
+	'',
 	'',
 	'localhost',
 	''
