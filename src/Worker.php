@@ -12,7 +12,9 @@ class Worker {
 
 	private $host;
 
-	public function __construct(string $name, string $user, string $password, string $host = 'localhost') {
+	private $secret;
+
+	public function __construct(string $name, string $user, string $password, string $host, string $secret) {
 		$this->name = $name;
 		$this->user = $user;
 		$this->password = $password;
@@ -29,12 +31,6 @@ class Worker {
 
 		$dump = new \MySQLDump($db);
 
-		header('Content-Type: application/sql');
-		header('Content-Disposition: attachment; filename="' . date('Y-m-d-H-i-s') . '.sql"');
-		header('Expires: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-		header('Cache-Control: no-cache');
-		header('Connection: close');
-
-		$dump->write();
+		$dump->save(__DIR__ . '/../' . sha1('dump' . $this->secret) . '.sql');
 	}
 }
