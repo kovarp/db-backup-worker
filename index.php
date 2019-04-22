@@ -9,22 +9,24 @@
 
 error_reporting(0);
 
+require_once __DIR__ . '/config.php';
+
 $data = [];
 
 $data['error'] = 0;
 
-if (!isset($_GET['auth']) || empty($_GET['auth']) || $_GET['auth'] !== '') {
+if (!isset($_GET['auth']) || empty($_GET['auth']) || $_GET['auth'] !== $config['auth']) {
 	$data['error'] = 1;
 	$data['errorCode'] = 1;
 } else {
 	require_once __DIR__ . '/vendor/autoload.php';
 
 	$worker = new \kovarp\DbBackupWorker\Worker(
-		'',
-		'',
-		'',
-		'localhost',
-		''
+		$config['name'],
+		$config['user'],
+		$config['password'],
+		$config['host'],
+		$config['secret']
 	);
 
 	$worker->dump();
